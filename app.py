@@ -9,7 +9,7 @@ def init_db():
     cur = conn.cursor()
     cur.execute('''
                    CREATE TABLE IF NOT EXISTS users (
-                   id TEXT PRIMAY KEY, 
+                   id TEXT PRIMARY KEY, 
                    pw TEXT NOT NULL
                    )
             ''')
@@ -67,6 +67,11 @@ def login():
             return "id 혹은 pw가 틀렸습니다."
     
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user',None)
+    return redirect('/')
 
 if __name__ == '__main__' :
     app.run(debug=True,use_reloader=True)    

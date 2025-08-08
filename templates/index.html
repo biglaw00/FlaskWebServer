@@ -5,13 +5,20 @@
         </title>홈</title>
     </head>
     <body>
-        <h3>biglaw00 blog</h3>
+        <h3>
+            {% if 'user' in session %}
+                {{session['user']}}님, 환영합니다!
+                <a href="/logout"><button>로그아웃</button></a>
+            {% else %}
+                환영합니다.
+                <a href="/login"><button>로그인</button></a>
+            {% endif %}
+        </h3>
         <p>첫 웹페이지</p>
         <hr>
-        <a href="/">홈</a>|
-        <a href="/about">학과소개</a>|
-        <a href="/contract">문의하기</a>|
-        <a href="/signup">회원가입</a>|
-        <a href="/login">로그인</a>
+        <a href="/"><button>홈</button></a>
+        <a href="/about"><button>학과소개</button></a>
+        <a href="/contract"><button>문의하기</button></a>
+        <a href="/signup"><button>회원가입</button></a>
     </body>
 </html>
